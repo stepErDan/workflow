@@ -1,14 +1,14 @@
-package com.example.workflow.service.impl;
+package com.example.workflow.service.flow.impl;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.workflow.builder.FlowAduitBuilder;
-import com.example.workflow.dao.FlowAuditMapper;
-import com.example.workflow.dao.FlowMapper;
+import com.example.workflow.dao.flow.FlowAuditMapper;
+import com.example.workflow.dao.flow.FlowMainMapper;
 import com.example.workflow.domain.FlowAudit;
 import com.example.workflow.domain.FlowMain;
 import com.example.workflow.domain.vo.ApproveParam;
-import com.example.workflow.service.FlowService;
+import com.example.workflow.service.flow.FlowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,18 +21,18 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class FlowServiceImpl implements FlowService {
 
-    private final FlowMapper flowMapper;
+    private final FlowMainMapper flowMainMapper;
 
     private final FlowAuditMapper flowAuditMapper;
 
     @Override
     public List<FlowMain> list(Long id) {
-        return flowMapper.selectList(new LambdaQueryWrapper<FlowMain>().eq(FlowMain::getMainId,id).orderByAsc(FlowMain::getRank));
+        return flowMainMapper.selectList(new LambdaQueryWrapper<FlowMain>().eq(FlowMain::getMainId,id).orderByAsc(FlowMain::getRank));
     }
 
     @Override
     public List<FlowMain> list(Long id,Class clazz) {
-        return flowMapper.selectList(new LambdaQueryWrapper<FlowMain>().eq(FlowMain::getMainId,id).orderByAsc(FlowMain::getRank));
+        return flowMainMapper.selectList(new LambdaQueryWrapper<FlowMain>().eq(FlowMain::getMainId,id).orderByAsc(FlowMain::getRank));
     }
 
     @Override
@@ -73,7 +73,7 @@ public class FlowServiceImpl implements FlowService {
         String tableName = getTableNameByTableNameAnnotation(clazz);
         //1、获取最新的审核步骤
         //获取主流程列表
-        List<FlowMain> mainList = flowMapper.getFlowByBusiness(tableName);
+        List<FlowMain> mainList = flowMainMapper.getFlowByBusiness(tableName);
         if (Objects.isNull(mainList) || mainList.size() == 0)
             throw new NullPointerException("未获取到业务对应流程，请检查表名是否正确或者关联表是否正确关联！");
 
@@ -94,7 +94,7 @@ public class FlowServiceImpl implements FlowService {
         flowAuditMapper.updateById(last);
 
         //5、更新业务
-        flowMapper.updateBusinessById(param.getId(),tableName,main.getStatus());
+        flowMainMapper.updateBusinessById(param.getId(),tableName,main.getStatus());
         return main;
     }
 

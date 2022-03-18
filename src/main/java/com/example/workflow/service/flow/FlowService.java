@@ -1,4 +1,4 @@
-package com.example.workflow.service;
+package com.example.workflow.service.flow;
 
 import com.example.workflow.domain.FlowAudit;
 import com.example.workflow.domain.FlowMain;

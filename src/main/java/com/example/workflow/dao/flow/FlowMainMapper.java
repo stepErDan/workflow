@@ -1,4 +1,4 @@
-package com.example.workflow.dao;
+package com.example.workflow.dao.flow;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.workflow.domain.FlowMain;
@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 @Mapper
-public interface FlowMapper extends BaseMapper<FlowMain> {
+public interface FlowMainMapper extends BaseMapper<FlowMain> {
 
     @Select("select * from flow_main where main_id in (select flow_id from flow_business_relation where business = #{tableName}) order by rank")
     List<FlowMain> getFlowByBusiness(String tableName);

@@ -1,9 +1,9 @@
-package com.example.workflow.controller;
+package com.example.workflow.controller.flow;
 
 import com.example.workflow.domain.Business;
 import com.example.workflow.domain.FlowMain;
 import com.example.workflow.domain.vo.ApproveParam;
-import com.example.workflow.service.FlowService;
+import com.example.workflow.service.flow.FlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

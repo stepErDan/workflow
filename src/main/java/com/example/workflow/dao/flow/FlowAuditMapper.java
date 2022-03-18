@@ -1,4 +1,4 @@
-package com.example.workflow.dao;
+package com.example.workflow.dao.flow;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.workflow.domain.FlowAudit;

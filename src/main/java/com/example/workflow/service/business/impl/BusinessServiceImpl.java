@@ -1,13 +1,12 @@
-package com.example.workflow.service.impl;
+package com.example.workflow.service.business.impl;
 
 import com.example.workflow.builder.FlowAduitBuilder;
-import com.example.workflow.dao.BusinessMapper;
+import com.example.workflow.dao.business.BusinessMapper;
 import com.example.workflow.domain.Business;
 import com.example.workflow.domain.FlowAudit;
 import com.example.workflow.domain.SysUser;
-import com.example.workflow.domain.vo.ApproveParam;
-import com.example.workflow.service.BusinessService;
-import com.example.workflow.service.FlowService;
+import com.example.workflow.service.business.BusinessService;
+import com.example.workflow.service.flow.FlowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.workflow.service;
+package com.example.workflow.service.business;
 
 import com.example.workflow.domain.Business;
 import com.example.workflow.domain.SysUser;
