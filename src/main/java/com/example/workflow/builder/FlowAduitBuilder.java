@@ -14,7 +14,7 @@ public class FlowAduitBuilder {
     private FlowAudit flowAudit;
 
     //开始
-    public static FlowAduitBuilder createFlowAudit(@NotNull Long businessId,@NotNull Long submitUser){
+    public static FlowAduitBuilder createFlowAudit(@NotNull String businessId,@NotNull String submitUser){
         FlowAduitBuilder builder = new FlowAduitBuilder();
         builder.flowAudit = new FlowAudit();
         builder.flowAudit.setBusinessId(businessId);
@@ -30,7 +30,7 @@ public class FlowAduitBuilder {
         return flowAudit;
     }
 
-    public FlowAduitBuilder setApproveUser(Long id){
+    public FlowAduitBuilder setApproveUser(String id){
         flowAudit.setApproveUser(id);
         return this;
     }

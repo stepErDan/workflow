@@ -23,10 +23,10 @@ public class BusinessServiceImpl implements BusinessService {
     public void add(Business business, SysUser sysUser) {
         int i = businessMapper.insert(business);
         if (i > 0){
-            ApproveParam param = new ApproveParam(String.valueOf(business.getId()),String.valueOf(sysUser.getId()));
-            flowService.pass(param,Business.class);
+//            ApproveParam param = new ApproveParam(String.valueOf(business.getId()),String.valueOf(sysUser.getId()));
+//            flowService.pass(param,Business.class);
             FlowAudit flowAudit = FlowAduitBuilder
-                    .createFlowAudit(business.getId(),sysUser.getId())
+                    .createFlowAudit(String.valueOf(business.getId()),String.valueOf(sysUser.getId()))
                     .build();
             flowService.initFlow(flowAudit,Business.class);
         }

@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 public interface FlowAuditMapper extends BaseMapper<FlowAudit> {
 
     @Select("select * from flow_audit where business_id = #{id} and main_id = #{mainId}")
-    FlowAudit getLastestAudit(@Param("list") Long mainId, @Param("id") Long id);
+    FlowAudit getLastestAudit(@Param("list") Long mainId, @Param("id") String id);
 
     /**
      * 获取业务对应的第一条流程信息

@@ -22,5 +22,5 @@ public interface FlowMapper extends BaseMapper<FlowMain> {
      * @return
      */
     @Update("update ${tableName} set approve_status = #{status} where id = #{id}")
-    int updateBusinessById(Long id, String tableName, Integer status);
+    int updateBusinessById(String id, String tableName, Integer status);
 }
